@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Origami - History and Philosophy</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Georgia', serif;
+            line-height: 1.7;
+            color: #333;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #2c3e50;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: #2c3e50;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: #e74c3c;
+        }
+        
+        main {
+            margin-top: 80px;
+            padding: 2rem 0;
+        }
+        
+        .page-header {
+            text-align: center;
+            padding: 3rem 0;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            margin-bottom: 3rem;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+        
+        .page-header h1 {
+            font-size: 3rem;
+            color: #2c3e50;
+            margin-bottom: 1rem;
+        }
+        
+        .page-header p {
+            font-size: 1.2rem;
+            color: #7f8c8d;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .content-section {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 2.5rem;
+            border-radius: 15px;
+            margin-bottom: 2rem;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+        
+        .content-section h2 {
+            color: #2c3e50;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            border-bottom: 3px solid #e74c3c;
+            padding-bottom: 0.5rem;
+        }
+        
+        .content-section h3 {
+            color: #34495e;
+            font-size: 1.4rem;
+            margin: 2rem 0 1rem 0;
+        }
+        
+        .content-section p {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+            text-align: justify;
+        }
+        
+        .timeline {
+            position: relative;
+            padding-left: 2rem;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: #e74c3c;
+        }
+        
+        .timeline-item {
+            position: relative;
+            margin-bottom: 2rem;
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin-left: 1rem;
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -1.75rem;
+            top: 1.5rem;
+            width: 12px;
+            height: 12px;
+            background: #e74c3c;
+            border-radius: 50%;
+            border: 3px solid white;
+        }
+        
+        .timeline-year {
+            font-weight: bold;
+            color: #e74c3c;
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .principles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .principle-card {
+            background: #f8f9fa;
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+            border-left: 5px solid #e74c3c;
+        }
+        
+        .principle-card h4 {
+            color: #2c3e50;
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .principle-card .icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+        
+        .quote-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 3rem;
+            border-radius: 15px;
+            text-align: center;
+            margin: 3rem 0;
+        }
+        
+        .quote {
+            font-size: 1.5rem;
+            font-style: italic;
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+        
+        .quote-author {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+        
+        .masters-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .master-card {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 10px;
+            text-align: center;
+        }
+        
+        .master-avatar {
+            width: 80px;
+            height: 80px;
+            background: #e74c3c;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem auto;
+            font-size: 2rem;
+            color: white;
+        }
+        
+        .master-name {
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 0.5rem;
+        }
+        
+        .master-contribution {
+            color: #7f8c8d;
+            font-size: 0.9rem;
+        }
+        
+        .philosophy-highlight {
+            background: linear-gradient(45deg, #ff9a9e 0%, #fecfef 100%);
+            padding: 2rem;
+            border-radius: 15px;
+            color: #2c3e50;
+            margin: 2rem 0;
+        }
+        
+        .philosophy-highlight h3 {
+            color: #2c3e50;
+            margin-bottom: 1rem;
+        }
+        
+        footer {
+            background: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 3rem;
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .page-header h1 {
+                font-size: 2rem;
+            }
+            
+            .content-section {
+                padding: 1.5rem;
+            }
+            
+            .timeline {
+                padding-left: 1rem;
+            }
+            
+            .timeline-item {
+                margin-left: 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">🗾 Origami World</div>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="tutorials.html">Tutorials</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                    <li><a href="about.html" class="active">About</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <section class="page-header">
+                <h1>About Origami</h1>
+                <p>Discover the rich history, philosophy, and cultural significance of the ancient art of paper folding</p>
+            </section>
+
+            <section class="content-section">
+                <h2>The Art of Transformation</h2>
+                <p>Origami, the Japanese art of paper folding, represents far more than a simple craft or hobby. It embodies a philosophy of transformation, patience, and the profound beauty that emerges from simplicity. The word "origami" itself comes from the Japanese words "ori" (folding) and "kami" (paper), but its essence transcends these basic components.</p>
+                
+                <p>At its core, origami teaches us that with careful attention, precise movements, and infinite patience, we can transform the most humble materials into objects of extraordinary beauty and meaning. A single sheet of paper, through the alchemy of folding, becomes a crane that symbolizes peace, a flower that celebrates beauty, or a complex geometric form that challenges our understanding of space and mathematics.</p>
+                
+                <p>This ancient practice offers a meditative journey where the folder becomes both artist and philosopher, exploring themes of impermanence, precision, and the relationship between constraint and creativity. In origami, limitations become liberations, and restrictions foster innovation.</p>
+            </section>
+
+            <section class="content-section">
+                <h2>Historical Timeline</h2>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-year">105 CE</div>
+                        <p>Paper is invented in China by Cai Lun, providing the foundation material that would eventually make origami possible.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">6th Century</div>
+                        <p>Paper-making techniques spread to Japan through Buddhist monks, bringing with it the materials for what would become origami.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">Heian Period (794-1185)</div>
+                        <p>Early forms of decorative paper folding emerge among Japanese nobility. Gift-wrapping and ceremonial folding practices develop.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">Edo Period (1603-1868)</div>
+                        <p>Origami flourishes as paper becomes more accessible. The first origami books are published, including "Hiden Senbazuru Orikata" (Secret to Folding One-Thousand Cranes).</p>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">1950s-1960s</div>
+                        <p>Akira Yoshizawa revolutionizes origami with wet-folding techniques and develops the modern symbolic notation system still used today.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">Modern Era</div>
+                        <p>Mathematical principles merge with artistic expression. Computer-aided design and complex crease patterns push the boundaries of what's possible.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="content-section">
+                <h2>Core Principles and Philosophy</h2>
+                <div class="principles-grid">
+                    <div class="principle-card">
+                        <span class="icon">🕯️</span>
+                        <h4>Mindfulness</h4>
+                        <p>Each fold requires complete presence and attention, creating a meditative state that calms the mind and focuses the spirit.</p>
+                    </div>
+                    <div class="principle-card">
+                        <span class="icon">⚖️</span>
+                        <h4>Precision</h4>
+                        <p>Accuracy in every fold builds toward perfection. Small errors compound, teaching the value of careful, deliberate action.</p>
+                    </div>
+                    <div class="principle-card">
+                        <span class="icon">🌱</span>
+                        <h4>Transformation</h4>
+                        <p>The journey from flat paper to three-dimensional form mirrors life's constant changes and our potential for growth.</p>
+                    </div>
+                    <div class="principle-card">
+                        <span class="icon">🎋</span>
+                        <h4>Simplicity</h4>
+                        <p>Beauty emerges from the simplest materials through pure technique, proving that luxury lies not in wealth but in skill.</p>
+                    </div>
+                </div>
+                
+                <div class="philosophy-highlight">
+                    <h3>The Way of the Fold</h3>
+                    <p>In Japanese philosophy, origami represents the concept of "mono no aware" - the bittersweet awareness of the impermanence of all things. Each folded creation, while potentially lasting for years, reminds us that all forms are temporary. The paper can be unfolded, returning to its original state, or it may deteriorate over time. This impermanence doesn't diminish the beauty of the creation; instead, it enhances our appreciation for the present moment and the skill that brought the form into being.</p>
+                </div>
+            </section>
+
+            <section class="quote-section">
+                <div class="quote">"When you fold, the ritual and the act of creation is more important than the final result. When your hands are busy, your heart is serene."</div>
+                <div class="quote-author">— Akira Yoshizawa, Father of Modern Origami</div>
+            </section>
+
+            <section class="content-section">
+                <h2>Master Artists and Innovators</h2>
+                <div class="masters-section">
+                    <div class="master-card">
+                        <div class="master-avatar">🎎</div>
+                        <div class="master-name">Akira Yoshizawa</div>
+                        <div class="master-contribution">Father of modern origami, inventor of wet-folding technique</div>
+                    </div>
+                    <div class="master-card">
+                        <div class="master-avatar">🗻</div>
+                        <div class="master-name">Satoshi Kamiya</div>
+                        <div class="master-contribution">Master of super-complex origami, creator of intricate animal designs</div>
+                    </div>
+                    <div class="master-card">
+                        <div class="master-avatar">🎯</div>
+                        <div class="master-name">Robert Lang</div>
+                        <div class="master-contribution">Mathematician and artist, pioneer of computer-aided origami design</div>
+                    </div>
+                    <div class="master-card">
+                        <div class="master-avatar">🌸</div>
+                        <div class="master-name">Tomoko Fuse</div>
+                        <div class="master-contribution">Queen of modular origami, expert in geometric and kusudama forms</div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="content-section">
+                <h2>Cultural Significance</h2>
+                
+                <h3>Symbolism in Japanese Culture</h3>
+                <p>In Japan, origami carries deep symbolic meaning. The paper crane, perhaps the most famous origami model, represents longevity and good fortune. According to legend, folding 1,000 paper cranes grants the folder a wish. This tradition gained international recognition through the story of Sadako Sasaki, a young girl who attempted to fold 1,000 cranes while battling leukemia after the atomic bombing of Hiroshima.</p>
+                
+                <h3>Modern Applications</h3>
+                <p>Today, origami principles extend far beyond artistic expression. Engineers use origami-inspired designs for everything from satellite solar panels that fold for launch to medical devices that can be compressed for insertion and then expand inside the body. The ancient art form has found new life in robotics, architecture, and space exploration.</p>
+                
+                <h3>Therapeutic Benefits</h3>
+                <p>Modern research has confirmed what practitioners have long known: origami provides significant therapeutic benefits. The practice improves hand-eye coordination, enhances spatial reasoning, reduces stress, and provides a sense of accomplishment. In educational settings, origami helps students understand geometric concepts, fractions, and problem-solving strategies.</p>
+            </section>
+
+            <section class="content-section">
+                <h2>The Mathematics of Beauty</h2>
+                <p>Origami exists at the fascinating intersection of art and mathematics. Every fold creates geometric relationships, and complex models often require sophisticated mathematical planning. The development of "crease patterns" - the complete fold structure laid out flat - has become an art form in itself, resembling intricate mandalas or architectural blueprints.</p>
+                
+                <p>Mathematicians study origami to understand how flat surfaces can be transformed into three-dimensional structures, leading to breakthroughs in fields ranging from computational geometry to material science. The constraints of origami - no cuts, no glue, working with a single sheet - force innovators to find elegant solutions within strict limitations.</p>
+                
+                <p>This marriage of mathematics and art demonstrates that analytical thinking and creative expression are not opposites but complementary forces that, when combined, can produce results more beautiful and functional than either could achieve alone.</p>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Origami World. Preserving the art of paper folding for future generations.</p>
+        </div>
+    </footer>
+</body>
+</html>
